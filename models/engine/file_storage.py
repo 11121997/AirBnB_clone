@@ -4,7 +4,7 @@ from os.path import isfile
 
 
 class FileStorage:
-    '''class that erializes instances to
+    '''class that serializes instances to
     a JSON file and deserializes JSON file to instances'''
     def __init__(self):
         '''initialize'''
