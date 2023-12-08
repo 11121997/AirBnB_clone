@@ -102,3 +102,4 @@ class HBNBconsole(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBconsole().cmdloop()
+
