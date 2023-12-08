@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 import cmd
 import sys
+from models.base_model  import BaseModel
 from models import storage
-from models.base_model import BaseModel
+
 
 class HBNBconsole(cmd.Cmd):
     prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
@@ -54,18 +55,50 @@ class HBNBconsole(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
+        
+        str_rep = arg.split()
+        if len(str_rep) < 2:  # missing id
+            print("** instance id missing **")
+            return
+        elif str_rep[0] not in HBNBconsole.classnames:
+            print("** class doesn't exist **")
+            return
+        key = str_rep[0] + "." + str_rep[1]
+        if key in storage.all():
+            obj = storage.all()[key]
+            print(obj)
         else:
-            str_rep = arg.split()
-            if len(str_rep) == 1:  # missing id
-                print("** instance id missing **")
-            elif str_rep[0] not in HBNBconsole.classnames:
-                print("** class doesn't exist **")
-            elif len(str_rep) == 2:
-                key = str_rep[0] + "." + str_rep[1]
-                obj = storage.all()[key]
-                print(obj)
-            else:
-                print("** no instance found **")
+            print("** no instance found **")
+    
+    def help_show(self):
+        '''Documentation for show help command'''
+        print('[Usage]: show <classname> <id>\n')
+    
+    def do_destroy(self, arg):
+        '''Delete instance by classname and id'''
+        if not arg:
+            print('** class name missing **')
+            return
+        str_rep = arg.split()
+        if len(str_rep) < 2:  # missing id
+            print("** instance id missing **")
+            return
+        elif str_rep[0] not in HBNBconsole.classnames:
+            print("** class doesn't exist **")
+            return
+
+        key = str_rep[0] + "." + str_rep[1]
+        if key in storage.all():
+            obj = storage.all()[key]
+            del obj
+            storage.save()
+        else:
+            print("** no instance found **")
+        
+    def help_destroy(self):
+        '''Documentation for destroy help command'''
+        print('[Usage]: destroy <classname> <id>\n')
+
 
 if __name__ == '__main__':
     HBNBconsole().cmdloop()

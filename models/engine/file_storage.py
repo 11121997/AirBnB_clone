@@ -5,8 +5,10 @@ from models.base_model import BaseModel
 from models.user import User
 
 
+classnames = ['BaseModel', 'User', 'State', 'City', 'Place', 'Review', 'Amenity']
+
 class FileStorage:
-    '''class that erializes instances to
+    '''class that serializes instances to
     a JSON file and deserializes JSON file to instances'''
     def __init__(self):
         '''initialize'''
@@ -30,8 +32,9 @@ class FileStorage:
 
     def reload(self):
         '''deserializes the JSON file to __objects'''
+        from models.base_model import BaseModel
         if isfile(self.__file_path):
-            with open(self.__file_path, 'r', encoding='utf-8') as file:
+            with open(self.__file_path) as file:
                 d_json = json.load(file)  # python dict
                 for key, val in d_json.items():
                     # evaluate the str (cls name) and returns (cls obj)
