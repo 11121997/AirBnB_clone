@@ -1,9 +1,14 @@
 #!/usr/bin/python3
 import cmd
+import sys
+from models import storage
+from models.base_model import BaseModel
 
 class HBNBconsole(cmd.Cmd):
-    prompt = "(hbnb) "
+    prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
     
+    classnames = ['BaseModel', 'User', 'State', 'City', 'Place', 'Review', 'Amenity']
+
     def do_quit(self, arg):
         '''This command to exit from program'''
         return True
@@ -24,9 +29,26 @@ class HBNBconsole(cmd.Cmd):
         print('Exit program when type CTRL+D')
     
     def emptyline(self):
-        """empty input line"""
+        '''empty input line'''
         pass
 
+    def do_create(self, arg):
+        '''Creates a new instance of classes, saves it, and prints the id'''
+        if not arg:
+            print(' Input the class name! ')
+            return
+        elif arg not in HBNBconsole.classnames:
+            print(' Class name not exist! ')
+            return
+        new_inst = eval(arg)()
+        storage.save()
+        print(new_inst.id)
+    
+    def help_create(self):
+        '''Documentation for create help command'''
+        print('[Usage]: create <classname> to create a class')
+    
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     HBNBconsole().cmdloop()
