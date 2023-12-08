@@ -22,13 +22,13 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             #add a call to the method new(self) on storage
-            models.storage.new(self)
+            storage.new(self)
 
     def save(self):
         ''''''
         self.updated_at = datetime.now()
         #call save(self) method of storage
-        models.storage.save()
+        storage.save()
 
     def to_dict(self):
         ''' returns a dictionary containing all 
