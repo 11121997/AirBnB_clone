@@ -35,10 +35,10 @@ class HBNBconsole(cmd.Cmd):
     def do_create(self, arg):
         '''Creates a new instance of classes, saves it, and prints the id'''
         if not arg:
-            print(' Input the class name! ')
+            print('** class name missing **')
             return
         elif arg not in HBNBconsole.classnames:
-            print(' Class name not exist! ')
+            print("** class doesn't exist **")
             return
         new_inst = eval(arg)()
         storage.save()
@@ -47,6 +47,26 @@ class HBNBconsole(cmd.Cmd):
     def help_create(self):
         '''Documentation for create help command'''
         print('[Usage]: create <classname> to create a class')
+    
+    def do_show(self, arg):
+        """Prints the string representation of
+        an instance based on the class name"""
+        if not arg:
+            print("** class name missing **")
+            return
+        else:
+            str_rep = arg.split()
+            if len(str_rep) == 1:  # missing id
+                print("** instance id missing **")
+            elif str_rep[0] not in HBNBconsole.classnames:
+                print("** class doesn't exist **")
+            elif len(str_rep) == 2:
+                key = str_rep[0] + "." + str_rep[1]
+                obj = storage.all()[key]
+                print(obj)
+            else:
+                print("** no instance found **")
+
     
 
 
