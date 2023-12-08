@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 import cmd
 import sys
+from models.base_model  import BaseModel
 from models import storage
-from models.base_model import BaseModel
+
 
 class HBNBconsole(cmd.Cmd):
     prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
