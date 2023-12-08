@@ -47,7 +47,7 @@ class HBNBconsole(cmd.Cmd):
     def help_create(self):
         '''Documentation for create help command'''
         print('[Usage]: create <classname> to create a class')
-    
+
     def do_show(self, arg):
         """Prints the string representation of
         an instance based on the class name"""
@@ -66,9 +66,6 @@ class HBNBconsole(cmd.Cmd):
                 print(obj)
             else:
                 print("** no instance found **")
-
-    
-
 
 if __name__ == '__main__':
     HBNBconsole().cmdloop()
