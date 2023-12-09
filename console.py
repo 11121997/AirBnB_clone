@@ -102,15 +102,51 @@ class HBNBconsole(cmd.Cmd):
     def do_all(self, arg):
         ''''''
         pass
-    
+
     def help_all(self):
         pass
 
     def do_update(self, arg):
-        pass
+        """Updates an instance by class name and id."""
+        str_rep = arg.split()
+        if not str_rep:
+            print("** class name missing **")
+            return
+        cls_name = str_rep[0]
+
+        if cls_name not in HBNBconsole.classnames:
+            print("** class doesn't exist **")
+            return
+
+        if len(str_rep) < 2:
+            print("** instance id missing **")
+            return
+        cls_id = str_rep[1]
+
+        key = "{}.{}".format(cls_name, cls_id)
+
+        if key not in storage.all():
+            print("** no instance found **")
+            return
+
+        if len(str_rep) < 3:
+            print("** attribute name missing **")
+            return
+        attr_name = str_rep[2]
+
+        if len(str_rep) < 4:
+            print("** value missing **")
+            return
+        attr_val = str_rep[3]
+
+        inst = storage.all()[key]
+        setattr(inst, attr_name, eval(attr_val))
+        #saves after updates
+        inst.save()
 
     def help_update(self):
-        pass
+        '''Documentation for update help command'''
+        print("Usage: update <className> <id> <attrName> <attrVal>\n")
 
 if __name__ == '__main__':
     HBNBconsole().cmdloop()
