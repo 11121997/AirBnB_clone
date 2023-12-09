@@ -46,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         new_inst = eval(arg)()
-        storage.save()
+        new_inst.save()
         print(new_inst.id)
 
     def do_show(self, arg):
