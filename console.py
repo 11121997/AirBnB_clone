@@ -11,7 +11,7 @@ from models.place import Place
 from models.review import Review
 
 
-class HBNBconsole(cmd.Cmd):
+class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
 
     classnames = {
@@ -42,7 +42,7 @@ class HBNBconsole(cmd.Cmd):
         if not arg:
             print('** class name missing **')
             return
-        elif arg not in HBNBconsole.classnames:
+        elif arg not in HBNBCommand.classnames:
             print("** class doesn't exist **")
             return
         new_inst = eval(arg)()
@@ -60,7 +60,7 @@ class HBNBconsole(cmd.Cmd):
         if len(str_rep) < 2:  # missing id
             print("** instance id missing **")
             return
-        elif str_rep[0] not in HBNBconsole.classnames:
+        elif str_rep[0] not in HBNBCommand.classnames:
             print("** class doesn't exist **")
             return
         key = str_rep[0] + "." + str_rep[1]
@@ -79,7 +79,7 @@ class HBNBconsole(cmd.Cmd):
         if len(str_rep) < 2:  # missing id
             print("** instance id missing **")
             return
-        elif str_rep[0] not in HBNBconsole.classnames:
+        elif str_rep[0] not in HBNBCommand.classnames:
             print("** class doesn't exist **")
             return
 
@@ -99,7 +99,7 @@ class HBNBconsole(cmd.Cmd):
         for k in N_dict.values():
             A_list.append(str(k))
         if arg:
-            if arg not in HBNBconsole.classnames:
+            if arg not in HBNBCommand.classnames:
                 print("** class doesn't exist **")
             else:
                 B_list = []
@@ -119,7 +119,7 @@ class HBNBconsole(cmd.Cmd):
             return
         cls_name = str_rep[0]
 
-        if cls_name not in HBNBconsole.classnames:
+        if cls_name not in HBNBCommand.classnames:
             print("** class doesn't exist **")
             return
 
@@ -151,4 +151,4 @@ class HBNBconsole(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    HBNBconsole().cmdloop()
+    HBNBCommand().cmdloop()
