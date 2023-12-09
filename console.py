@@ -63,10 +63,10 @@ class HBNBCommand(cmd.Cmd):
         elif str_rep[0] not in HBNBCommand.classnames:
             print("** class doesn't exist **")
             return
-        key = str_rep[0] + "." + str_rep[1]
-        if key in storage.all():
-            obj = storage.all()[key]
-            print(obj)
+        dic = storage.all()
+        key = f"{str_rep[0]}.{str_rep[1]}"
+        if key in dic:
+            print(dic[key])
         else:
             print("** no instance found **")
 
