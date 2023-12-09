@@ -110,7 +110,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print(A_list)
 
-
     def do_update(self, arg):
         """Updates an instance by class name and id."""
         str_rep = arg.split()

@@ -4,6 +4,7 @@ import unittest
 from models.amenity import Amenity
 from datetime import datetime
 
+
 class TestAmenity(unittest.TestCase):
     ''' Amenity Tests '''
 
@@ -19,6 +20,6 @@ class TestAmenity(unittest.TestCase):
         self.assertTrue(hasattr(am, 'name'))
         self.assertIsInstance(am.name, str)
 
-    
+
 if __name__ == '__main__':
-    unittest.main()   
+    unittest.main()

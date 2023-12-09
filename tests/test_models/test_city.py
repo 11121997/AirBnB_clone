@@ -19,7 +19,7 @@ class TestCity(unittest.TestCase):
         self.assertTrue(hasattr(ct, "state_id"))
         self.assertIsInstance(ct.state_id, str)
         self.assertTrue(hasattr(ct, "name"))
-        self.assertIsInstance(ct.name, str)     
+        self.assertIsInstance(ct.name, str)
 
 
 if __name__ == "__main__":

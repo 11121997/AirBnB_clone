@@ -23,7 +23,7 @@ class TestUser(unittest.TestCase):
         self.assertTrue(hasattr(usr, "first_name"))
         self.assertIsInstance(usr.first_name, str)
         self.assertTrue(hasattr(usr, "last_name"))
-        self.assertIsInstance(usr.last_name, str)     
+        self.assertIsInstance(usr.last_name, str)
 
 
 if __name__ == "__main__":

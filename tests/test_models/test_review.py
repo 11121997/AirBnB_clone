@@ -22,7 +22,6 @@ class TestReview(unittest.TestCase):
         self.assertIsInstance(rv.user_id, str)
         self.assertTrue(hasattr(rv, "text"))
         self.assertIsInstance(rv.text, str)
-    
 
     if __name__ == "__main__":
         unittest.main()
