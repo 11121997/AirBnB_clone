@@ -98,7 +98,19 @@ class HBNBconsole(cmd.Cmd):
     def help_destroy(self):
         '''Documentation for destroy help command'''
         print('[Usage]: destroy <classname> <id>\n')
+    
+    def do_all(self, arg):
+        ''''''
+        pass
+    
+    def help_all(self):
+        pass
 
+    def do_update(self, arg):
+        pass
+
+    def help_update(self):
+        pass
 
 if __name__ == '__main__':
     HBNBconsole().cmdloop()
