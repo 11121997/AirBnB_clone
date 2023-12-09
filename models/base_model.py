@@ -2,7 +2,7 @@
 '''import necessary modules'''
 import uuid
 from datetime import datetime
-from models import storage
+import models
 
 class BaseModel:
     ''''''
@@ -22,13 +22,13 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             #add a call to the method new(self) on storage
-            storage.new(self)
+            models.storage.new(self)
 
     def save(self):
         ''''''
         self.updated_at = datetime.now()
         #call save(self) method of storage
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         ''' returns a dictionary containing all 

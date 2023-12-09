@@ -1,23 +1,15 @@
 #!/usr/bin/python3
 import json
 from os.path import isfile
-from models.user import User
 from models.base_model import BaseModel
+from models.user import User
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-classnames = ['BaseModel', 'User', 'State', 'City', 'Place', 'Review', 'Amenity']
-
-class FileStorage:
-    '''class that serializes instances to
-    a JSON file and deserializes JSON file to instances'''
-    def __init__(self):
-        '''initialize'''
-        self.__file_path = 'file.json'
-        self.__objects = {
+classnames = {
         'User': User,
         'BaseModel': BaseModel,
         'State': State,
@@ -26,6 +18,14 @@ class FileStorage:
         'Place': Place,
         'Review': Review
     }
+
+class FileStorage:
+    '''class that serializes instances to
+    a JSON file and deserializes JSON file to instances'''
+    def __init__(self):
+        '''initialize'''
+        self.__file_path = 'file.json'
+        self.__objects = {}
 
     def all(self):
         '''returns the dictionary __objects'''
