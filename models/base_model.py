@@ -14,21 +14,21 @@ class BaseModel:
         - *args: list of arguments (unused)
         - *kwargs: dict of keyword arguments(key-values)
         '''
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
         if kwargs:
             if '__class__' in kwargs:
                 del kwargs['__class__']
 
         for key, val in kwargs.items():
-            if key == 'created_at' or key == 'updated_at':
+            if key in ['created_at', 'updated_at']:
                 setattr(self, key,
                         datetime.strptime(val, '%Y-%m-%dT%H:%M:%S.%f'))
             else:
                 setattr(self, key, val)
         else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
             # add a call to the method new(self) on storage
             models.storage.new(self)
 
