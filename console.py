@@ -115,11 +115,29 @@ class HBNBconsole(cmd.Cmd):
         print('[Usage]: destroy <classname> <id>\n')
     
     def do_all(self, arg):
-        ''''''
-        pass
+        '''Prints all string representation of
+        all instances based or not on the class name'''
+        N_dict = storage.all()
+        A_list = []
+        for k in N_dict.values():
+            A_list.append(str(k))
+        if arg:
+            if arg not in HBNBconsole.classnames:
+                print("** class doesn't exist **")
+            else:
+                B_list = []
+                for key, val in N_dict.items():
+                    if arg in key:
+                       B_list.append(str(val))
+                    print(B_list)
+        else:
+            print(A_list)
+        
 
     def help_all(self):
-        pass
+        """help for all func"""
+        print("'[Usage]: all <classname> <id>\n'")
+
 
     def do_update(self, arg):
         """Updates an instance by class name and id."""
