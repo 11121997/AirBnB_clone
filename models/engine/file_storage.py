@@ -1,7 +1,13 @@
 #!/usr/bin/python3
 import json
 from os.path import isfile
-
+from models.user import User
+from models.base_model import BaseModel
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 classnames = ['BaseModel', 'User', 'State', 'City', 'Place', 'Review', 'Amenity']
 
@@ -11,7 +17,15 @@ class FileStorage:
     def __init__(self):
         '''initialize'''
         self.__file_path = 'file.json'
-        self.__objects = {}
+        self.__objects = {
+        'User': User,
+        'BaseModel': BaseModel,
+        'State': State,
+        'City': City,
+        'Amenity': Amenity,
+        'Place': Place,
+        'Review': Review
+    }
 
     def all(self):
         '''returns the dictionary __objects'''
@@ -30,7 +44,6 @@ class FileStorage:
 
     def reload(self):
         '''deserializes the JSON file to __objects'''
-        from models.base_model import BaseModel
         if isfile(self.__file_path):
             with open(self.__file_path) as file:
                 d_json = json.load(file)  # python dict
