@@ -107,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
                 for key, val in N_dict.items():
                     if arg in key:
                         B_list.append(str(val))
-                    print(B_list)
+                print(B_list)
         else:
             print(A_list)
 
