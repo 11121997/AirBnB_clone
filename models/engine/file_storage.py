@@ -24,6 +24,7 @@ classnames = {
 class FileStorage:
     '''class that serializes instances to
     a JSON file and deserializes JSON file to instances'''
+
     def __init__(self):
         '''initialize'''
         self.__file_path = 'file.json'
@@ -47,8 +48,11 @@ class FileStorage:
     def reload(self):
         '''deserializes the JSON file to __objects'''
         if isfile(self.__file_path):
-            with open(self.__file_path) as file:
-                d_json = json.load(file)  # python dict
-                for key, val in d_json.items():
-                    # evaluate the str (cls name) and returns (cls obj)
-                    self.__objects[key] = eval(val['__class__'])(**val)
+            try:
+                with open(self.__file_path) as file:
+                    d_json = json.load(file)  # python dict
+                    for key, val in d_json.items():
+                        # evaluate the str (cls name) and returns (cls obj)
+                        self.__objects[key] = eval(val['__class__'])(**val)
+            except Exception:
+                pass
