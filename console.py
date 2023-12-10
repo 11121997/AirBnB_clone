@@ -43,7 +43,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        elif arg not in HBNBCommand.classnames:
+        if arg not in HBNBCommand.classnames:
             print("** class doesn't exist **")
             return
         new_inst = eval(arg)()
@@ -86,8 +86,7 @@ class HBNBCommand(cmd.Cmd):
 
         key = str_rep[0] + "." + str_rep[1]
         if key in storage.all():
-            obj = storage.all()[key]
-            del obj
+            del storage.all()[key]
             storage.save()
         else:
             print("** no instance found **")
