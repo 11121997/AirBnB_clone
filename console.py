@@ -46,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
         if arg not in HBNBCommand.classnames:
             print("** class doesn't exist **")
             return
-        new_inst = eval(arg)()
+        new_inst = HBNBCommand.classnames[arg]()
         new_inst.save()
         print(new_inst.id)
 
