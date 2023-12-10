@@ -35,13 +35,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
-<<<<<<< HEAD
-        """empty input line\n"""
-        return False
-=======
         """empty input line"""
-        pass
->>>>>>> 9ed39ad1e275208ee486c49067f5e081fbe3ef4e
+        return False
 
     def do_create(self, arg):
         """Creates a new instance of classes, saves it, and prints the id"""
