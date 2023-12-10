@@ -35,7 +35,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
-        """empty input line\n"""
+        """an empty line + ENTER shouldn’t execute anything\n"""
         pass
 
     def do_create(self, arg):
