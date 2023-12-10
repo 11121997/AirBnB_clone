@@ -10,7 +10,7 @@ import json
 class TestFileStorage(unittest.TestCase):
     """tests for filestorage"""
     def test_FileStorage_init(self):
-        """ DOC DOC DOC """
+        """ Documents for test file storage"""
         filepath = models.storage._FileStorage__file_path
         _objs = models.storage._FileStorage__objects
         """check class attr"""
