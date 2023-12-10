@@ -14,7 +14,7 @@ from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """ Class for Console Commands"""
-    prompt = "(hbnb) " if sys.__stdin__.isatty() else ''
+    prompt = "(hbnb) "
 
     classnames = {
         "User": User,
@@ -36,7 +36,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         """empty input line"""
-        return False
+        pass
 
     def do_create(self, arg):
         """Creates a new instance of classes, saves it, and prints the id"""
