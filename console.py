@@ -12,35 +12,34 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
+    prompt = "(hbnb) " if sys.__stdin__.isatty() else ''
 
     classnames = {
-        'User': User,
-        'BaseModel': BaseModel,
-        'State': State,
-        'City': City,
-        'Amenity': Amenity,
-        'Place': Place,
-        'Review': Review
+        "User": User,
+        "BaseModel": BaseModel,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review
     }
 
     def do_EOF(self, arg):
-        '''Handle EOF to End program'''
-        print()  # emtpy line before exit
+        """Handle EOF to End program\n"""
         return True
 
     def do_quit(self, arg):
-        '''Quit command to exit the program'''
+        """Quit command to exit the program\n"""
         return True
 
     def emptyline(self):
-        '''empty input line'''
+        """empty input line\n"""
         pass
 
     def do_create(self, arg):
-        '''Creates a new instance of classes, saves it, and prints the id'''
+        """Creates a new instance of classes, saves it, and prints the id\n"""
         if not arg:
-            print('** class name missing **')
+            print("** class name missing **")
             return
         elif arg not in HBNBCommand.classnames:
             print("** class doesn't exist **")
@@ -51,7 +50,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """Prints the string representation of
-        an instance based on the class name"""
+        an instance based on the class name\n"""
         if not arg:
             print("** class name missing **")
             return
@@ -71,9 +70,9 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, arg):
-        '''Delete instance by classname and id'''
+        """Delete instance by classname and id\n"""
         if not arg:
-            print('** class name missing **')
+            print("** class name missing **")
             return
         str_rep = arg.split()
         if len(str_rep) < 2:  # missing id
@@ -92,8 +91,8 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_all(self, arg):
-        '''Prints all string representation of
-        all instances based or not on the class name'''
+        """Prints all string representation of
+        all instances based or not on the class name\n"""
         N_dict = storage.all()
         A_list = []
         for k in N_dict.values():
@@ -111,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
             print(A_list)
 
     def do_update(self, arg):
-        """Updates an instance by class name and id."""
+        """Updates an instance by class name and id.\n"""
         str_rep = arg.split()
         if not str_rep:
             print("** class name missing **")
@@ -149,5 +148,5 @@ class HBNBCommand(cmd.Cmd):
         inst.save()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     HBNBCommand().cmdloop()
