@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""modules for console"""
 import cmd
 import sys
 from models.base_model import BaseModel
@@ -12,6 +13,7 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
+    """ Class for Console Commands"""
     prompt = "(hbnb) " if sys.__stdin__.isatty() else ''
 
     classnames = {
