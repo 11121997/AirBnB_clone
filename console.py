@@ -27,19 +27,19 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def do_EOF(self, arg):
-        """Handle EOF to End program\n"""
+        """Handle EOF to End program"""
         return True
 
     def do_quit(self, arg):
-        """Quit command to exit the program\n"""
+        """Quit command to exit the program"""
         return True
 
     def emptyline(self):
-        """empty input line\n"""
+        """empty input line"""
         pass
 
     def do_create(self, arg):
-        """Creates a new instance of classes, saves it, and prints the id\n"""
+        """Creates a new instance of classes, saves it, and prints the id"""
         if not arg:
             print("** class name missing **")
             return
@@ -52,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """Prints the string representation of
-        an instance based on the class name\n"""
+        an instance based on the class name"""
         if not arg:
             print("** class name missing **")
             return
@@ -72,7 +72,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, arg):
-        """Delete instance by classname and id\n"""
+        """Delete instance by classname and id"""
         if not arg:
             print("** class name missing **")
             return
@@ -94,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Prints all string representation of
-        all instances based or not on the class name\n"""
+        all instances based or not on the class name"""
         N_dict = storage.all()
         A_list = []
         for k in N_dict.values():
@@ -112,7 +112,7 @@ class HBNBCommand(cmd.Cmd):
             print(A_list)
 
     def do_update(self, arg):
-        """Updates an instance by class name and id.\n"""
+        """Updates an instance by class name and id."""
         str_rep = arg.split()
         if not str_rep:
             print("** class name missing **")
@@ -150,5 +150,5 @@ class HBNBCommand(cmd.Cmd):
         inst.save()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     HBNBCommand().cmdloop()
