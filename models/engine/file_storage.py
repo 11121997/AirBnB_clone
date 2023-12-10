@@ -26,11 +26,11 @@ class FileStorage:
     a JSON file and deserializes JSON file to instances'''
 
     __file_path = 'file.json'
-    __objects = {}
+    __objects = dict()
 
     def __init__(self):
         '''initialize'''
-        return FileStorage.__objects
+        pass
 
     def all(self):
         '''returns the dictionary __objects'''
